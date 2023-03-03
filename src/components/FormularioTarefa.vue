@@ -19,7 +19,7 @@
       <div class="column">
         <div class="is-flex is-align-items-center is-justify-content-space-between">
           <section>
-            <strong>00:00:00</strong>
+            <strong>{{tempoDecorrido}}</strong>
           </section>
           <button class="button" @click="iniciarContagem">
             <span class="icon">
@@ -44,9 +44,19 @@ import { defineComponent } from 'vue';
 
 export default defineComponent({
   name: 'FormularioTarefa',
+  data() {
+    return {
+      tempoEmSegundos: 0,
+    };
+  },
+  computed: {
+    tempoDecorrido(): string {
+      return new Date(this.tempoEmSegundos * 1000).toISOString().substring(11, 19);
+    },
+  },
   methods: {
     iniciarContagem() {
-      console.log('iniciando');
+      setInterval(() => { this.tempoEmSegundos += 1; }, 1000);
     },
     finalizarContagem() {
       console.log('finalizando');
