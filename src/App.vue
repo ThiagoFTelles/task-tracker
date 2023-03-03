@@ -15,15 +15,15 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
-import BarraLateral from './components/BarraLateral.vue';
-import FormularioTarefa from './components/FormularioTarefa.vue';
-import DetalhesTarefa from './components/lista-de-tarefas/DetalhesTarefa.vue';
+import { defineComponent } from 'vue'
+import BarraLateral from './components/BarraLateral.vue'
+import FormularioTarefa from './components/FormularioTarefa.vue'
+import DetalhesTarefa from './components/lista-de-tarefas/DetalhesTarefa.vue'
 
 export default defineComponent({
   name: 'App',
   components: { BarraLateral, FormularioTarefa, DetalhesTarefa },
-});
+})
 </script>
 
 <style>
