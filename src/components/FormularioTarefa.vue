@@ -47,6 +47,7 @@ export default defineComponent({
   data() {
     return {
       tempoEmSegundos: 0,
+      cronometro: 0,
     };
   },
   computed: {
@@ -55,11 +56,12 @@ export default defineComponent({
     },
   },
   methods: {
-    iniciarContagem() {
-      setInterval(() => { this.tempoEmSegundos += 1; }, 1000);
+    iniciarContagem(): void {
+      this.cronometro = setInterval(() => { this.tempoEmSegundos += 1; }, 1000);
     },
-    finalizarContagem() {
-      console.log('finalizando');
+    finalizarContagem(): void {
+      clearInterval(this.cronometro);
+      this.tempoEmSegundos = 0;
     },
   },
 });
