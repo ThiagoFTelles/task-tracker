@@ -7,6 +7,9 @@
       <FormularioTarefa @aosalvarTarefa="salvarTarefa"/>
       <div class="lista">
         <detalhes-tarefa v-for="(tarefa, index) in tarefas" :key="index" :tarefa="tarefa" />
+        <Box   v-if="!tarefas.length">
+          <p>Nenhuma tarefa iniciada hoje.</p>
+        </Box>
       </div>
     </div>
   </main>
@@ -18,6 +21,7 @@ import BarraLateral from './components/BarraLateral.vue'
 import FormularioTarefa from './components/FormularioTarefa.vue'
 import DetalhesTarefa from './components/lista-de-tarefas/DetalhesTarefa.vue'
 import ITarefa from './interfaces/ITarefas'
+import Box from './components/lista-de-tarefas/BoxTarefa.vue'
 
 export default defineComponent({
   name: 'App',
@@ -25,6 +29,7 @@ export default defineComponent({
     BarraLateral, 
     FormularioTarefa, 
     DetalhesTarefa, 
+    Box,
   },
   data() {
     return {
