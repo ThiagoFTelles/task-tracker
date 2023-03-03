@@ -10,6 +10,7 @@
           Nova Tarefa
           <input
             id="input-tarefa"
+            v-model="descricao"
             type="text"
             class="input"
             placeholder="Nova Tarefa"
@@ -17,7 +18,7 @@
         </label>
       </div>
       <div class="column">
-        <TemporizadorFormulario />
+        <TemporizadorFormulario @ao-temporizador-finalizado="finalizarTarefa"/>
       </div>
     </div>
   </div>
@@ -30,6 +31,17 @@ import TemporizadorFormulario from './TemporizadorFormulario.vue';
 export default defineComponent({
   name: 'FormularioTarefa',
   components: { TemporizadorFormulario },
+  data() {
+    return {
+      descricao: '',
+    };
+  },
+  methods: {
+    finalizarTarefa(tempoDecorrido: number) : void {
+      console.log(tempoDecorrido, this.descricao);
+      this.descricao = '';
+    },
+  },
 });
 </script>
 

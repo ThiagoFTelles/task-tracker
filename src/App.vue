@@ -5,6 +5,11 @@
     </div>
     <div class="column is-trhee-quarter">
       <FormularioTarefa />
+      <div class="lista">
+        <detalhes-tarefa />
+        <detalhes-tarefa />
+        <detalhes-tarefa />
+      </div>
     </div>
   </main>
 </template>
@@ -13,13 +18,16 @@
 import { defineComponent } from 'vue';
 import BarraLateral from './components/BarraLateral.vue';
 import FormularioTarefa from './components/FormularioTarefa.vue';
+import DetalhesTarefa from './components/lista-de-tarefas/DetalhesTarefa.vue';
 
 export default defineComponent({
   name: 'App',
-  components: { BarraLateral, FormularioTarefa },
+  components: { BarraLateral, FormularioTarefa, DetalhesTarefa },
 });
 </script>
 
 <style>
-
+.lista {
+  padding: 1.25rem;
+}
 </style>
