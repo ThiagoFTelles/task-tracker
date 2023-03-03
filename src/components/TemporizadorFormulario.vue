@@ -17,8 +17,8 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
-import CronometroFormulario from './CronometroFormulario.vue';
+import { defineComponent } from 'vue'
+import CronometroFormulario from './CronometroFormulario.vue'
 
 export default defineComponent({
   name: 'TemporizadorFormulario',
@@ -29,21 +29,21 @@ export default defineComponent({
       tempoEmSegundos: 0,
       cronometro: 0,
       cronometroRodando: false,
-    };
+    }
   },
   methods: {
     iniciarContagem(): void {
-      this.cronometro = setInterval(() => { this.tempoEmSegundos += 1; }, 1000);
-      this.cronometroRodando = true;
+      this.cronometro = setInterval(() => { this.tempoEmSegundos += 1 }, 1000)
+      this.cronometroRodando = true
     },
     finalizarContagem(): void {
-      clearInterval(this.cronometro);
-      this.$emit('aoTemporizadorFinalizado', this.tempoEmSegundos);
-      this.tempoEmSegundos = 0;
-      this.cronometroRodando = false;
+      clearInterval(this.cronometro)
+      this.$emit('aoTemporizadorFinalizado', this.tempoEmSegundos)
+      this.tempoEmSegundos = 0
+      this.cronometroRodando = false
     },
   },
-});
+})
 </script>
 
 <style>

@@ -25,24 +25,28 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
-import TemporizadorFormulario from './TemporizadorFormulario.vue';
+import { defineComponent } from 'vue'
+import TemporizadorFormulario from './TemporizadorFormulario.vue'
 
 export default defineComponent({
   name: 'FormularioTarefa',
+  emits: ['aosalvarTarefa'],
   components: { TemporizadorFormulario },
   data() {
     return {
       descricao: '',
-    };
+    }
   },
   methods: {
     finalizarTarefa(tempoDecorrido: number) : void {
-      console.log(tempoDecorrido, this.descricao);
-      this.descricao = '';
+      this.$emit('aosalvarTarefa', {
+        duracaoEmSegundos: tempoDecorrido,
+        descricao: this.descricao,
+      })
+      this.descricao = ''
     },
   },
-});
+})
 </script>
 
 <style scoped>
