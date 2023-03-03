@@ -1,9 +1,12 @@
 <template>
-  <main class="columns is-gapless is-multiline">
+  <main 
+    class="columns is-gapless is-multiline" 
+    :class="{'dark-mode': activeDarkMode}"
+  >
     <div class="column is-one-quarter">
-      <BarraLateral />
+      <BarraLateral @aoTemaAlterado="trocarTema"/>
     </div>
-    <div class="column is-trhee-quarter">
+    <div class="column is-trhee-quarter conteudo">
       <FormularioTarefa @aosalvarTarefa="salvarTarefa"/>
       <div class="lista">
         <detalhes-tarefa v-for="(tarefa, index) in tarefas" :key="index" :tarefa="tarefa" />
@@ -34,11 +37,15 @@ export default defineComponent({
   data() {
     return {
       tarefas: [] as ITarefa[],
+      activeDarkMode: false,
     }
   },
   methods: {
     salvarTarefa(tarefa: ITarefa) {
       this.tarefas.push(tarefa)
+    },
+    trocarTema(activeDarkMode: boolean) {
+      this.activeDarkMode = activeDarkMode
     },
   },
 })
@@ -47,5 +54,19 @@ export default defineComponent({
 <style>
 .lista {
   padding: 1.25rem;
+}
+
+main {
+  --bg-primario: #fff;
+  --texto-primario: #000;
+}
+
+main.dark-mode {
+  --bg-primario: #2b2d42;
+  --texto-primario: #ddd;
+}
+
+.conteudo {
+  background-color: var(--bg-primario);
 }
 </style>
