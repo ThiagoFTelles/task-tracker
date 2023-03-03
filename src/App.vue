@@ -1,7 +1,10 @@
 <template>
-  <main class="columns is-gapless is-multiline">
+  <main 
+    class="columns is-gapless is-multiline" 
+    :class="{'dark-mode': activeDarkMode}"
+  >
     <div class="column is-one-quarter">
-      <BarraLateral />
+      <BarraLateral @aoTemaAlterado="trocarTema"/>
     </div>
     <div class="column is-trhee-quarter conteudo">
       <FormularioTarefa @aosalvarTarefa="salvarTarefa"/>
@@ -34,11 +37,15 @@ export default defineComponent({
   data() {
     return {
       tarefas: [] as ITarefa[],
+      activeDarkMode: false,
     }
   },
   methods: {
     salvarTarefa(tarefa: ITarefa) {
       this.tarefas.push(tarefa)
+    },
+    trocarTema(activeDarkMode: boolean) {
+      this.activeDarkMode = activeDarkMode
     },
   },
 })
